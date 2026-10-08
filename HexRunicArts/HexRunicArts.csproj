@@ -14,18 +14,18 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\..\..\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Dev\BepInEx\plugins\Hex_Viking-HexRunicArts\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\..\release\HexRunicArts\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,6 +33,10 @@
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>..\..\..\bepinex_mod_libs\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="assembly_utils_publicized">
+      <HintPath>..\..\..\publicized_assemblies\v1.0.17\assembly_utils_publicized.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="assembly_valheim_publicized">
@@ -59,9 +63,14 @@
       <HintPath>..\..\..\valheim_mod_libraries\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\..\valheim_mod_libraries\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Patches\PatchTemplate.cs" />
+    <Compile Include="Patches\PlayerPatch.cs" />
+    <Compile Include="Patches\TreeLogPatch.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
