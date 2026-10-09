@@ -22,6 +22,7 @@ namespace HexRunicArts.Core.Services
 
             var effect = Object.Instantiate(prefab, position, Quaternion.identity);
 
+            // This is what prevents the lightning effect from killing the player
             foreach (var aoe in effect.GetComponentsInChildren<Aoe>(true))
             {
                 foreach (var collider in aoe.GetComponents<Collider>())

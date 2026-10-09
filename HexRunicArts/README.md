@@ -1,35 +1,28 @@
-# $projectname$
+# HexRunicArts
 
-A Valheim mod using BepInEx and Harmony.
+Automatically adds minimap pins for supported gatherable resources and dungeon entrances.
 
-## Development Setup
+Includes a draggable **Map Tracking** overlay for enabling or disabling individual resources and dungeons in-game.
 
-### Option 1: Environment Variable (Recommended)
-Set a system environment variable:
-```
-VALHEIM_INSTALL=C:\Program Files (x86)\Steam\steamapps\common\Valheim
-```
+## Features
 
-### Option 2: User Project File
-Create `$safeprojectname$.csproj.user` with your Valheim installation path.
+### Splinter Preview
+[![Splinter](https://raw.githubusercontent.com/guillenjgg/valheim-hex-mod-images/main/hexrunicarts/hexrunicarts_2.png)](https://youtu.be/xaq2xGUEP_8)
 
-### Option 3: Auto-Detection
-The project will automatically search common Steam library locations.
+## Installation
 
-## Building
+### Manual Installation
 
-- **Debug Build**: Automatically deploys to `BepInEx\plugins\$safeprojectname$`
-- **Release Build**: Creates package in `bin\Release`
+1. Install BepInEx for Valheim.
+2. Extract the mod into your Valheim `BepInEx/plugins` folder.
+3. Launch the game.
 
-## Plugin Information
+## Feedback & Support
 
-- **GUID**: `com.$username$.$safeprojectname$`
-- **Name**: `$projectname$`
-- **Version**: `1.0.0`
+Report bugs, request features, or provide feedback through Discord:
 
-## Debugging
+https://discord.gg/wU2FXD94v4
 
-1. Build in Debug configuration
-2. Launch Valheim
-3. Attach Visual Studio debugger to `valheim.exe`
-4. Set breakpoints in your patches
+## Source Code
+
+https://github.com/guillenjgg/valheim-hex-runic-arts
