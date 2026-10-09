@@ -14,22 +14,10 @@ namespace HexRunicArts.Patches
                 return;
             }
 
-            var shortcut = Plugin.SplinterHotkey.Value;
-
-            if (!ZInput.GetKeyDown(shortcut.MainKey, true))
+            if (Plugin.SplinterHotkey.Value.IsDown())
             {
-                return;
+                TreeSplinterFeature.ActivateSplinterAbility(__instance);
             }
-
-            foreach (var modifier in shortcut.Modifiers)
-            {
-                if (!ZInput.GetKey(modifier, true))
-                {
-                    return;
-                }
-            }
-
-            TreeSplinterFeature.ActivateSplinterAbility(__instance);
         }
     }
 }

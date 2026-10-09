@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using HexRunicArts.Core.Services;
-using System.Linq;
 
 namespace HexRunicArts.Patches
 {
@@ -16,14 +15,6 @@ namespace HexRunicArts.Patches
             }
 
             TreeStumpService.Init(__instance);
-
-            if (TreeStumpService.StumpPrefabHashKeys.Count > 0)
-            {
-                foreach (var key in TreeStumpService.StumpPrefabHashKeys)
-                {
-                    Plugin.Log.LogInfo($"Tree stump prefab hash key: {key}");
-                }
-            }
         }
     }
 }

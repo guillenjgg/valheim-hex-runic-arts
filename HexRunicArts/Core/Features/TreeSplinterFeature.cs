@@ -68,6 +68,11 @@ namespace HexRunicArts.Core.Features
                 }
             }
 
+            if (Plugin.EnableStumpDestroy.Value)
+            {
+                splinteredLogs += TreeStumpService.DestroyNearbyStumps(player, toolTier);
+            }
+
             if (insufficientTier)
             {
                 player.Message(MessageHud.MessageType.Center, "Your axe is too weak to splinter some nearby logs");
