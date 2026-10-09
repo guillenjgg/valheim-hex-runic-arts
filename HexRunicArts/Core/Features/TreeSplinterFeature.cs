@@ -1,4 +1,5 @@
 ﻿using HexRunicArts.Core.Constants;
+using HexRunicArts.Core.Services;
 using UnityEngine;
 
 namespace HexRunicArts.Core.Features
@@ -32,6 +33,7 @@ namespace HexRunicArts.Core.Features
                     hit.m_damage.m_chop = 10000f;
                     hit.m_toolTier = 100;
                     hit.m_point = closestPoint;
+                    hit.SetAttacker(player);
 
                     log.Damage(hit);
                     splinteredLogs++;
@@ -45,6 +47,16 @@ namespace HexRunicArts.Core.Features
                 player.Message(MessageHud.MessageType.Center, "No logs nearby");
                 return;
             }
+
+            if (Plugin.EnableSplinterEffect.Value)
+            {
+                SplinterEffectService.Spawn(playerPosition);
+            }
+        }
+
+        internal static void OnLogSplintered()
+        {
+            Player.m_localPlayer?.RaiseSkill(Skills.SkillType.WoodCutting, 0.5f);
         }
     }
 }

@@ -7,6 +7,8 @@ namespace HexRunicArts.Patches
     [HarmonyPatch(typeof(TreeLog), nameof(TreeLog.Destroy))]
     internal static class TreeLogPatch
     {
+        private const float SkillExperiencePerLog = 0.5f;
+
         [HarmonyPrefix]
         private static bool DestroyPrefix(TreeLog __instance, HitData hitData, bool cheatedTool)
         {
@@ -36,6 +38,11 @@ namespace HexRunicArts.Patches
             }
 
             ZNetScene.instance.Destroy(__instance.gameObject);
+
+            if (hitData.GetAttacker() is Player player && player == Player.m_localPlayer)
+            {
+                player.RaiseSkill(Skills.SkillType.WoodCutting, 0.5f);
+            }
 
             return false;
         }

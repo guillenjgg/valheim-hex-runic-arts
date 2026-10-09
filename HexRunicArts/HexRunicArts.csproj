@@ -72,7 +72,8 @@
     <Compile Include="Core\Constants\DamageIdentifiers.cs" />
     <Compile Include="Core\Features\TreeSplinterFeature.cs" />
     <Compile Include="Core\Services\SpawnDropService.cs" />
-    <Compile Include="Patches\HitVariantDebugPatch.cs" />
+    <Compile Include="Core\Services\SplinterEffectService.cs" />
+    <Compile Include="Patches\DebugPatch.cs" />
     <Compile Include="Patches\PlayerPatch.cs" />
     <Compile Include="Patches\TreeLogPatch.cs" />
     <Compile Include="Plugin.cs" />
