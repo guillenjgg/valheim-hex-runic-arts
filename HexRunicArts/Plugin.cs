@@ -17,6 +17,7 @@ namespace HexRunicArts
         private Harmony _harmonyInstance;
 
         internal static ConfigEntry<KeyboardShortcut> SplinterHotkey;
+        internal static ConfigEntry<int> SplinterRadius;
 
         internal static ManualLogSource Log;
         internal static Plugin Instance;
@@ -26,7 +27,11 @@ namespace HexRunicArts
             Instance = this;
             Log = Logger;
 
-            SplinterHotkey = Config.Bind("Hotkeys", "SplinterHotkey", new KeyboardShortcut(KeyCode.F, KeyCode.LeftControl), "Hotkey to activate Splinter ability.");
+            SplinterHotkey = Config.Bind("Splinter", "SplinterHotkey", new KeyboardShortcut(KeyCode.F, KeyCode.LeftShift), "Hotkey to activate Splinter ability.");
+            
+            SplinterRadius = Config
+                .Bind("Splinter", "SplinterRadius", 10, 
+                new ConfigDescription("Radius within which logs will be splintered. Measured in meters.", new AcceptableValueRange<int>(1, 50)));
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             _harmonyInstance = new Harmony(PluginGuid);

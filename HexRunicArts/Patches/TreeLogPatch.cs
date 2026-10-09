@@ -1,4 +1,6 @@
 ﻿using HarmonyLib;
+using HexRunicArts.Core.Constants;
+using HexRunicArts.Core.Features;
 using UnityEngine;
 
 namespace HexRunicArts.Patches
@@ -9,7 +11,7 @@ namespace HexRunicArts.Patches
         [HarmonyPrefix]
         private static bool DestroyPrefix(TreeLog __instance, HitData hitData, bool cheatedTool)
         {
-            if (hitData == null || hitData.m_variant != PlayerPatch.SplinteringVariant)
+            if (hitData == null || hitData.m_variant != DamageIdentifiers.SplinteringDamageID)
             {
                 return true;
             }
