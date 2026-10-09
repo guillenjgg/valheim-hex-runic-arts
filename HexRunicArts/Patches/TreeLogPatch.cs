@@ -39,11 +39,6 @@ namespace HexRunicArts.Patches
 
             ZNetScene.instance.Destroy(__instance.gameObject);
 
-            if (hitData.GetAttacker() is Player player && player == Player.m_localPlayer)
-            {
-                player.RaiseSkill(Skills.SkillType.WoodCutting, 0.5f);
-            }
-
             return false;
         }
     }

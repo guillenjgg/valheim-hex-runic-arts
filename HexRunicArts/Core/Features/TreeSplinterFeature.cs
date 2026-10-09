@@ -58,6 +58,10 @@ namespace HexRunicArts.Core.Features
                     hit.SetAttacker(player);
 
                     log.Damage(hit);
+
+                    // Award experience locally so the attacking player receives it,
+                    // even when another player owns and processes damage to the log.
+                    player.RaiseSkill(Skills.SkillType.WoodCutting, 0.5f);
                     splinteredLogs++;
 
                     break;
@@ -77,11 +81,6 @@ namespace HexRunicArts.Core.Features
             {
                 SplinterEffectService.Spawn(playerPosition);
             }
-        }
-
-        internal static void OnLogSplintered()
-        {
-            Player.m_localPlayer?.RaiseSkill(Skills.SkillType.WoodCutting, 0.5f);
         }
     }
 }
