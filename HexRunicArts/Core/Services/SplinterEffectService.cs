@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace HexRunicArts.Core.Services
 {
@@ -25,6 +24,14 @@ namespace HexRunicArts.Core.Services
 
             foreach (var aoe in effect.GetComponentsInChildren<Aoe>(true))
             {
+                foreach (var collider in aoe.GetComponents<Collider>())
+                {
+                    if (collider.isTrigger)
+                    {
+                        collider.enabled = false;
+                    }
+                }
+
                 aoe.enabled = false;
             }
         }
