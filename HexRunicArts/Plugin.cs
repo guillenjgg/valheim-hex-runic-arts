@@ -19,6 +19,7 @@ namespace HexRunicArts
         internal static ConfigEntry<KeyboardShortcut> SplinterHotkey;
         internal static ConfigEntry<int> SplinterRadius;
         internal static ConfigEntry<bool> EnableSplinterEffect;
+        internal static ConfigEntry<bool> EnableStumpDestroy;
 
         internal static ManualLogSource Log;
         internal static Plugin Instance;
@@ -35,6 +36,7 @@ namespace HexRunicArts
                 new ConfigDescription("Radius within which logs will be splintered. Measured in meters.", new AcceptableValueRange<int>(1, 50)));
 
             EnableSplinterEffect = Config.Bind("Splinter", "EnableSplinterEffect", true, "Enable or disable the visual effect when logs are splintered.");
+            EnableStumpDestroy = Config.Bind("Splinter", "EnableTreeTrunkDestroy", true, "Enable or disable the destruction of tree trunks.");
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             _harmonyInstance = new Harmony(PluginGuid);

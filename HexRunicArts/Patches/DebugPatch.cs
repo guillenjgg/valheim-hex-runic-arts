@@ -1,59 +1,41 @@
 ﻿//using HarmonyLib;
-//using HexRunicArts.Core.Constants;
 //using System.Collections.Generic;
+//using System.Reflection;
+//using UnityEngine;
 
 //namespace HexRunicArts.Patches
 //{
-//    [HarmonyPatch(typeof(ObjectDB), nameof(ObjectDB.Awake))]
+//    [HarmonyPatch(typeof(ZNetScene), nameof(ZNetScene.Awake))]
 //    internal static class DebugPatch
 //    {
-//        [HarmonyPostfix]
-//        private static void AwakePostfix(ObjectDB __instance)
-//        {
-//            var variants = new Dictionary<short, List<string>>();
+//        private static readonly FieldInfo NamedPrefabsField = AccessTools.Field(typeof(ZNetScene), "m_namedPrefabs");
 
-//            foreach (var prefab in __instance.m_items)
+//        [HarmonyPostfix]
+//        private static void AwakePostfix(ZNetScene __instance)
+//        {
+//            var namedPrefabs = NamedPrefabsField.GetValue(__instance) as Dictionary<int, GameObject>;
+
+//            if (namedPrefabs == null)
+//            {
+//                return;
+//            }
+
+//            foreach (var prefab in namedPrefabs.Values)
 //            {
 //                if (prefab == null)
 //                {
 //                    continue;
 //                }
 
-//                var itemDrop = prefab.GetComponent<ItemDrop>();
+//                var tree = prefab.GetComponent<TreeBase>();
 
-//                if (itemDrop == null)
+//                if (tree == null || tree.m_stubPrefab == null)
 //                {
 //                    continue;
 //                }
 
-//                var variant = itemDrop.m_itemData.m_shared.m_hitVariant;
-
-//                if (!variants.TryGetValue(variant, out var prefabs))
-//                {
-//                    prefabs = new List<string>();
-//                    variants[variant] = prefabs;
-//                }
-
-//                prefabs.Add(prefab.name);
+//                Plugin.Log.LogInfo($"Tree: {prefab.name} | Stump: {tree.m_stubPrefab.name}");
 //            }
-
-//            Plugin.Log.LogInfo("========== HIT VARIANT DEBUG ==========");
-
-//            foreach (var entry in variants)
-//            {
-//                Plugin.Log.LogInfo($"Hit Variant: {entry.Key} | Prefabs: {string.Join(", ", entry.Value)}");
-//            }
-
-//            if (variants.TryGetValue(DamageIdentifiers.SplinteringDamageID, out var collisions))
-//            {
-//                Plugin.Log.LogWarning($"Splintering damage ID collision detected! Prefabs: {string.Join(", ", collisions)}");
-//            }
-//            else
-//            {
-//                Plugin.Log.LogInfo($"No registered item prefab uses SplinteringDamageID ({DamageIdentifiers.SplinteringDamageID}).");
-//            }
-
-//            Plugin.Log.LogInfo("=======================================");
 //        }
 //    }
 //}
