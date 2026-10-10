@@ -47,6 +47,10 @@
       <HintPath>..\..\..\bepinex_mod_libs\BepInEx.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="SoftReferenceableAssets">
+      <HintPath>..\..\..\valheim_mod_libraries\SoftReferenceableAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -71,13 +75,18 @@
   <ItemGroup>
     <Compile Include="Core\Constants\DamageIdentifiers.cs" />
     <Compile Include="Core\Features\TreeSplinterFeature.cs" />
+    <Compile Include="Core\Services\RuneStonePlacementService.cs" />
+    <Compile Include="Core\Services\RuneStoneSpawnService.cs" />
     <Compile Include="Core\Services\SpawnDropService.cs" />
     <Compile Include="Core\Services\SplinterEffectService.cs" />
+    <Compile Include="Core\Services\StartTempleService.cs" />
     <Compile Include="Core\Services\TreeStumpService.cs" />
     <Compile Include="Patches\DebugPatch.cs" />
+    <Compile Include="Patches\HeightmapLifecyclePatch.cs" />
     <Compile Include="Patches\PlayerPatch.cs" />
     <Compile Include="Patches\TreeLogPatch.cs" />
     <Compile Include="Patches\ZNetScenePatch.cs" />
+    <Compile Include="Patches\ZoneSystemSpawnLifecyclePatch.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

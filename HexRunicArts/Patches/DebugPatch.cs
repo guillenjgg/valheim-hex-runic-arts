@@ -1,41 +1,59 @@
 ﻿//using HarmonyLib;
+//using System;
 //using System.Collections.Generic;
-//using System.Reflection;
-//using UnityEngine;
 
 //namespace HexRunicArts.Patches
 //{
-//    [HarmonyPatch(typeof(ZNetScene), nameof(ZNetScene.Awake))]
-//    internal static class DebugPatch
+//    [HarmonyPatch(typeof(ZoneSystem), nameof(ZoneSystem.Load))]
+//    internal static class ZoneSystemLocationDebugPatch
 //    {
-//        private static readonly FieldInfo NamedPrefabsField = AccessTools.Field(typeof(ZNetScene), "m_namedPrefabs");
-
 //        [HarmonyPostfix]
-//        private static void AwakePostfix(ZNetScene __instance)
+//        private static void ZoneSystemLoadPostfix()
 //        {
-//            var namedPrefabs = NamedPrefabsField.GetValue(__instance) as Dictionary<int, GameObject>;
+//            var zoneSystem = ZoneSystem.instance;
 
-//            if (namedPrefabs == null)
+//            if (zoneSystem == null)
 //            {
 //                return;
 //            }
 
-//            foreach (var prefab in namedPrefabs.Values)
+//            var field = AccessTools.Field(typeof(ZoneSystem), "m_locations");
+//            var locations = field?.GetValue(zoneSystem) as List<ZoneSystem.ZoneLocation>;
+
+//            if (locations == null)
 //            {
-//                if (prefab == null)
-//                {
-//                    continue;
-//                }
-
-//                var tree = prefab.GetComponent<TreeBase>();
-
-//                if (tree == null || tree.m_stubPrefab == null)
-//                {
-//                    continue;
-//                }
-
-//                Plugin.Log.LogInfo($"Tree: {prefab.name} | Stump: {tree.m_stubPrefab.name}");
+//                Plugin.Log.LogWarning("ZoneSystem | Location registry unavailable.");
+//                return;
 //            }
+
+//            Plugin.Log.LogInfo($"ZoneSystem | Registered locations: {locations.Count}");
+
+//            var invalidCount = 0;
+
+//            foreach (var location in locations)
+//            {
+//                if (location == null)
+//                {
+//                    continue;
+//                }
+
+//                try
+//                {
+//                    var name = location.m_prefab.Name;
+
+//                    if (name.IndexOf("runestone", StringComparison.OrdinalIgnoreCase) >= 0 ||
+//                        name.IndexOf("runestone", StringComparison.OrdinalIgnoreCase) >= 0)
+//                    {
+//                        Plugin.Log.LogInfo($"ZoneSystem | Runestone location: {name} | Hash: {location.Hash}");
+//                    }
+//                }
+//                catch (Exception)
+//                {
+//                    invalidCount++;
+//                }
+//            }
+
+//            Plugin.Log.LogInfo($"ZoneSystem | Invalid location references: {invalidCount}");
 //        }
 //    }
 //}
