@@ -13,9 +13,14 @@
             "Yet the gods do not grant their gifts freely.\n\n" +
             "Bring forth ten pieces of wood and five stones as an offering.";
 
-        internal const string SplinteringUnlocked = 
+        internal static string SplinteringUnlocked = 
             "The gods have accepted your offering.\n\n" +
-            "The ancient knowledge of Splintering awakens within you.";
+            "The ancient knowledge of Splintering awakens within you." +
+            $"To cast Splintering, fell a tree and with an axe equipped aim near the log and press {Plugin.SplinterHotkey.Value} to splinter the log.";;
+
+        internal static string SplinteringAlreadyUnlocked =>
+    "You have already mastered the ancient art of Splintering. The thunder of Thor now answers your call.\n\n" +
+    $"To cast Splintering, fell a tree and with an axe equipped aim near the log and press {Plugin.SplinterHotkey.Value} to splinter the log.";
 
         internal static string GetSplinteringCollectionText(Player player)
         {

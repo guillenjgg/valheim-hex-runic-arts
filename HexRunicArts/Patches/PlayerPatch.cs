@@ -1,5 +1,7 @@
 ﻿using HarmonyLib;
 using HexRunicArts.Core.Features;
+using HexRunicArts.Models;
+using HexRunicArts.Services;
 
 namespace HexRunicArts.Patches
 {
@@ -16,6 +18,12 @@ namespace HexRunicArts.Patches
 
             if (Plugin.SplinterHotkey.Value.IsDown())
             {
+                if (LoreProgressionService.GetSplinteringProgress(__instance) != SplinteringProgressModel.Unlocked)
+                {
+                    __instance.Message(MessageHud.MessageType.Center, "Splintering has not been unlocked");
+                    return;
+                }
+
                 TreeSplinterFeature.ActivateSplinterAbility(__instance);
             }
         }

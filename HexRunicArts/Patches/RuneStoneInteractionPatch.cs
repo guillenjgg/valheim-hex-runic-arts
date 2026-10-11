@@ -69,7 +69,7 @@ namespace HexRunicArts.Patches
             }
             else if (progress == SplinteringProgressModel.Unlocked)
             {
-                text = LoreTextService.SplinteringUnlocked;
+                text = LoreTextService.SplinteringAlreadyUnlocked;
             }
 
             TextViewer.instance.ShowText(
