@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HexRunicArts.Services
+namespace HexRunicArts.Services.Lore
 {
     internal static class LoreObjectiveService
     {

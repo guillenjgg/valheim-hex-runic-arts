@@ -84,7 +84,7 @@ namespace HexRunicArts.Core.Features
 
             if (splinteredLogs > 0 && Plugin.EnableSplinterEffect.Value)
             {
-                SplinterEffectService.Spawn(playerPosition);
+                EffectService.Spawn(playerPosition);
             }
         }
     }

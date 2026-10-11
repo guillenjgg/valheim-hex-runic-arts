@@ -2,7 +2,7 @@
 
 namespace HexRunicArts.Core.Services
 {
-    internal static class SplinterEffectService
+    internal static class EffectService
     {
         private const string LightningPrefabName = "lightningAOE";
 

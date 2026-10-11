@@ -1,4 +1,4 @@
-﻿namespace HexRunicArts.Services
+﻿namespace HexRunicArts.Services.Lore
 {
     internal static class LoreTextService
     {

@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
+using HexRunicArts.Core.GUI;
 using HexRunicArts.Models;
-using HexRunicArts.Services;
+using HexRunicArts.Services.Lore;
 
 namespace HexRunicArts.Patches
 {
@@ -9,6 +10,7 @@ namespace HexRunicArts.Patches
     {
         private const string RuneStoneIdentifierKey = "HexRunicArts_RuneStoneId";
         private const string RuneStoneIdentifier = "StartTempleRuneStone";
+
 
         [HarmonyPrefix]
         private static bool InteractPrefix(RuneStone __instance, Humanoid character, bool hold, ref bool __result)
@@ -46,9 +48,7 @@ namespace HexRunicArts.Patches
 
             if (progress == SplinteringProgressModel.NotStarted)
             {
-                LoreProgressionService.SetSplinteringProgress(
-                    player,
-                    SplinteringProgressModel.CollectingMaterials);
+                LoreProgressionService.SetSplinteringProgress(player, SplinteringProgressModel.CollectingMaterials);
 
                 text = LoreTextService.SplinteringIntroduction;
             }
@@ -56,9 +56,7 @@ namespace HexRunicArts.Patches
             {
                 if (LoreObjectiveService.TryConsumeSplinteringMaterials(player))
                 {
-                    LoreProgressionService.SetSplinteringProgress(
-                        player,
-                        SplinteringProgressModel.Unlocked);
+                    LoreProgressionService.SetSplinteringProgress(player, SplinteringProgressModel.Unlocked);
 
                     text = LoreTextService.SplinteringUnlocked;
                 }
@@ -72,6 +70,8 @@ namespace HexRunicArts.Patches
                 text = LoreTextService.SplinteringAlreadyUnlocked;
             }
 
+            RunicQuestTrackerGui.UpdateQuest(player);
+
             TextViewer.instance.ShowText(
                 TextViewer.Style.Rune,
                 "The First Rune",
@@ -81,5 +81,6 @@ namespace HexRunicArts.Patches
             __result = false;
             return false;
         }
+
     }
 }

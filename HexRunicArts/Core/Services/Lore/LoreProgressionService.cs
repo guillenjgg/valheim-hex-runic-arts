@@ -1,7 +1,7 @@
 ﻿using HexRunicArts.Models;
 using System;
 
-namespace HexRunicArts.Services
+namespace HexRunicArts.Services.Lore
 {
     internal static class LoreProgressionService
     {

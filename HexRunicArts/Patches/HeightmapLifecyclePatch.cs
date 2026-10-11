@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using HexRunicArts.Core.Services;
+using HexRunicArts.Core.Services.RuneStone;
 using UnityEngine;
 
 namespace HexRunicArts.Patches

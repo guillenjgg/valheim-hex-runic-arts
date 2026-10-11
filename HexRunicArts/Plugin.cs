@@ -2,6 +2,7 @@
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
+using HexRunicArts.Core.GUI;
 using Jotunn.Configs;
 using Jotunn.Entities;
 using Jotunn.Managers;
@@ -78,6 +79,8 @@ namespace HexRunicArts
             EnableSplinterEffect = Config.Bind("Splinter", "EnableSplinterEffect", true, "Enable or disable the visual effect when logs are splintered.");
             EnableStumpDestroy = Config.Bind("Splinter", "EnableTreeTrunkDestroy", true, "Enable or disable the destruction of tree trunks.");
 
+            RunicQuestTrackerGui.Init();
+
             Assembly assembly = Assembly.GetExecutingAssembly();
             _harmonyInstance = new Harmony(PluginGuid);
             _harmonyInstance.PatchAll(assembly);
@@ -88,6 +91,8 @@ namespace HexRunicArts
         private void OnDestroy()
         {
             Log.LogInfo($"{PluginName} v{PluginVersion} unloaded.");
+
+            RunicQuestTrackerGui.Destroy();
 
             _harmonyInstance?.UnpatchSelf();
             _harmonyInstance = null;

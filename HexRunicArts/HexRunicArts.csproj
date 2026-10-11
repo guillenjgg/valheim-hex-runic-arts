@@ -79,18 +79,27 @@
       <HintPath>..\..\..\valheim_mod_libraries\UnityEngine.PhysicsModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\valheim_mod_libraries\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\valheim_mod_libraries\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Constants\DamageIdentifiers.cs" />
     <Compile Include="Core\Features\TreeSplinterFeature.cs" />
+    <Compile Include="Core\GUI\RunicQuestTrackerGui.cs" />
     <Compile Include="Core\Services\CreatureDropService.cs" />
-    <Compile Include="Core\Services\LoreObjectiveService.cs" />
-    <Compile Include="Core\Services\LoreProgressionService.cs" />
-    <Compile Include="Core\Services\LoreTextService.cs" />
-    <Compile Include="Core\Services\RuneStonePlacementService.cs" />
-    <Compile Include="Core\Services\RuneStoneSpawnService.cs" />
+    <Compile Include="Core\Services\Lore\LoreObjectiveService.cs" />
+    <Compile Include="Core\Services\Lore\LoreProgressionService.cs" />
+    <Compile Include="Core\Services\Lore\LoreTextService.cs" />
+    <Compile Include="Core\Services\RuneStone\RuneStonePlacementService.cs" />
+    <Compile Include="Core\Services\RuneStone\RuneStoneSpawnService.cs" />
     <Compile Include="Core\Services\SpawnDropService.cs" />
-    <Compile Include="Core\Services\SplinterEffectService.cs" />
+    <Compile Include="Core\Services\EffectService.cs" />
     <Compile Include="Core\Services\StartTempleService.cs" />
     <Compile Include="Core\Services\TreeStumpService.cs" />
     <Compile Include="Models\SplinteringProgressModel.cs" />
@@ -99,6 +108,7 @@
     <Compile Include="Patches\PlayerPatch.cs" />
     <Compile Include="Patches\RuneStoneInteractionPatch.cs" />
     <Compile Include="Patches\TreeLogPatch.cs" />
+    <Compile Include="Patches\ValkyriePatch.cs" />
     <Compile Include="Patches\ZNetScenePatch.cs" />
     <Compile Include="Patches\ZoneSystemSpawnLifecyclePatch.cs" />
     <Compile Include="Plugin.cs" />
@@ -118,5 +128,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Assets\AssetBundles\hexrunicarts" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace HexRunicArts.Core.Services
+namespace HexRunicArts.Core.Services.RuneStone
 {
     internal static class RuneStonePlacementService
     {
