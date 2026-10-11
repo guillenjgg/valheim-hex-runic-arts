@@ -75,15 +75,20 @@
   <ItemGroup>
     <Compile Include="Core\Constants\DamageIdentifiers.cs" />
     <Compile Include="Core\Features\TreeSplinterFeature.cs" />
+    <Compile Include="Core\Services\LoreObjectiveService.cs" />
+    <Compile Include="Core\Services\LoreProgressionService.cs" />
+    <Compile Include="Core\Services\LoreTextService.cs" />
     <Compile Include="Core\Services\RuneStonePlacementService.cs" />
     <Compile Include="Core\Services\RuneStoneSpawnService.cs" />
     <Compile Include="Core\Services\SpawnDropService.cs" />
     <Compile Include="Core\Services\SplinterEffectService.cs" />
     <Compile Include="Core\Services\StartTempleService.cs" />
     <Compile Include="Core\Services\TreeStumpService.cs" />
+    <Compile Include="Models\SplinteringProgressModel.cs" />
     <Compile Include="Patches\DebugPatch.cs" />
     <Compile Include="Patches\HeightmapLifecyclePatch.cs" />
     <Compile Include="Patches\PlayerPatch.cs" />
+    <Compile Include="Patches\RuneStoneInteractionPatch.cs" />
     <Compile Include="Patches\TreeLogPatch.cs" />
     <Compile Include="Patches\ZNetScenePatch.cs" />
     <Compile Include="Patches\ZoneSystemSpawnLifecyclePatch.cs" />

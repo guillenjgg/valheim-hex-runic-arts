@@ -32,6 +32,12 @@ namespace HexRunicArts.Patches
                 return;
             }
 
+            if (RuneStoneSpawnService.Exists(targetPosition))
+            {
+                _placementValidated = true;
+                return;
+            }
+
             if (!RuneStonePlacementService.TryGetValidPosition(targetPosition, out var validPosition))
             {
                 return;

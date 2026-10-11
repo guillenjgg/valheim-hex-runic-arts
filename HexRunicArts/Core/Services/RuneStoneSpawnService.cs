@@ -11,8 +11,6 @@ namespace HexRunicArts.Core.Services
         private const float DuplicateDistance = 5f;
         private const string RuneStoneIdentifierKey = "HexRunicArts_RuneStoneId";
         private const string RuneStoneIdentifier = "StartTempleRuneStone";
-        private const string RuneStoneIdKey = "HexRunicArts_RuneStoneId";
-        private const string RuneStoneId = "StartTemple";
 
         private static readonly FieldInfo LocationProxyPrefabField = AccessTools.Field(typeof(ZoneSystem), "m_locationProxyPrefab");
         private static readonly MethodInfo GetLocationMethod = AccessTools.Method(typeof(ZoneSystem), "GetLocation", new[] { typeof(int) });
@@ -115,6 +113,58 @@ namespace HexRunicArts.Core.Services
             );
 
             return true;
+        }
+
+        internal static bool Exists(Vector3 position)
+        {
+            if (ZoneSystem.instance == null || ZDOMan.instance == null || LocationProxyPrefabField == null)
+            {
+                return false;
+            }
+
+            var prefab = LocationProxyPrefabField.GetValue(ZoneSystem.instance) as GameObject;
+
+            if (prefab == null)
+            {
+                return false;
+            }
+
+            var objects = new List<ZDO>();
+            var sector = ZoneSystem.GetZone(position);
+
+            ZDOMan.instance.FindSectorObjects(sector, new SimulationDistance(1, 0, false), objects);
+
+            var proxyHash = prefab.name.GetStableHashCode();
+            var locationHash = LocationName.GetStableHashCode();
+
+            foreach (var zdo in objects)
+            {
+                if (zdo.GetPrefab() != proxyHash)
+                {
+                    continue;
+                }
+
+                if (zdo.GetInt(ZDOVars.s_location, 0) != locationHash)
+                {
+                    continue;
+                }
+
+                if (Vector3.Distance(zdo.GetPosition(), position) > DuplicateDistance)
+                {
+                    continue;
+                }
+
+                if (zdo.GetString(RuneStoneIdentifierKey, "") != RuneStoneIdentifier)
+                {
+                    continue;
+                }
+
+                Plugin.Log.LogInfo($"RuneStone | Existing runestone verified | Position: {zdo.GetPosition()}");
+
+                return true;
+            }
+
+            return false;
         }
     }
 }
