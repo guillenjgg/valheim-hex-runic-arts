@@ -11,28 +11,30 @@
             "they channeled the thunder of Thor, commanding the very fibers of timber " +
             "to fracture and yield.\n\n" +
             "Yet the gods do not grant their gifts freely.\n\n" +
-            "Bring forth ten pieces of wood and five stones as an offering.";
+            "Seek Eikthyr, the Horned One, whose antlers command the lightning of the storm. " +
+            "Slay the beast and retrieve his heart, for within it lingers a spark of divine thunder.\n\n" +
+            "Bring forth the heart of the Horned One as your offering.";
 
-        internal static string SplinteringUnlocked = 
+        internal static string SplinteringUnlocked =>
             "The gods have accepted your offering.\n\n" +
-            "The ancient knowledge of Splintering awakens within you." +
-            $"To cast Splintering, fell a tree and with an axe equipped aim near the log and press {Plugin.SplinterHotkey.Value} to splinter the log.";;
+            "The thunder once wielded by the Horned One now answers to your axe. " +
+            "The ancient knowledge of Splintering awakens within you.\n\n" +
+            $"To cast Splintering, fell a tree and with an axe equipped aim near the log and press {Plugin.SplinterHotkey.Value} to splinter the log.";
 
         internal static string SplinteringAlreadyUnlocked =>
-    "You have already mastered the ancient art of Splintering. The thunder of Thor now answers your call.\n\n" +
-    $"To cast Splintering, fell a tree and with an axe equipped aim near the log and press {Plugin.SplinterHotkey.Value} to splinter the log.";
+            "You have already mastered the ancient art of Splintering. The thunder of Thor now answers your call.\n\n" +
+            $"To cast Splintering, fell a tree and with an axe equipped aim near the log and press {Plugin.SplinterHotkey.Value} to splinter the log.";
 
         internal static string GetSplinteringCollectionText(Player player)
         {
             var progress = LoreObjectiveService.GetSplinteringMaterialProgress(player);
-
-            var wood = progress["$item_wood"];
-            var stone = progress["$item_stone"];
+            var heart = progress["Eikthyr's Heart"];
 
             return
                 "The gods await your offering.\n\n" +
-                $"Wood: {wood.Current}/{wood.Required}\n" +
-                $"Stone: {stone.Current}/{stone.Required}";
+                "Retrieve the heart of the Horned One, " +
+                "still charged with the fury of the storm.\n\n" +
+                $"Eikthyr's Heart: {heart.Current}/{heart.Required}";
         }
     }
 }

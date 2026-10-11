@@ -15,7 +15,17 @@ namespace HexRunicArts.Patches
             }
 
             TreeStumpService.Init(__instance);
+
+            var eikthyrPrefab = __instance.GetPrefab("Eikthyr");
+
+            if (eikthyrPrefab != null)
+            {
+                CreatureDropService.RegisterEikthyrDrops(eikthyrPrefab);
+            }
+            else
+            {
+                Plugin.Log.LogWarning("CreatureDrop | Eikthyr prefab not found.");
+            }
         }
     }
 }
-    

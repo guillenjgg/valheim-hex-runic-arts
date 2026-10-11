@@ -47,6 +47,10 @@
       <HintPath>..\..\..\bepinex_mod_libs\BepInEx.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Jotunn">
+      <HintPath>..\..\..\bepinex_mod_libs\Jotunn.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="SoftReferenceableAssets">
       <HintPath>..\..\..\valheim_mod_libraries\SoftReferenceableAssets.dll</HintPath>
       <Private>False</Private>
@@ -63,6 +67,10 @@
       <HintPath>..\..\..\valheim_mod_libraries\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\..\valheim_mod_libraries\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\valheim_mod_libraries\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
@@ -75,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Core\Constants\DamageIdentifiers.cs" />
     <Compile Include="Core\Features\TreeSplinterFeature.cs" />
+    <Compile Include="Core\Services\CreatureDropService.cs" />
     <Compile Include="Core\Services\LoreObjectiveService.cs" />
     <Compile Include="Core\Services\LoreProgressionService.cs" />
     <Compile Include="Core\Services\LoreTextService.cs" />
@@ -105,6 +114,9 @@
     <None Include="README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\AssetBundles\hexrunicarts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

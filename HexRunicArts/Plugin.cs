@@ -2,17 +2,29 @@
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
+using Jotunn.Configs;
+using Jotunn.Entities;
+using Jotunn.Managers;
+using Jotunn.Utils;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
 namespace HexRunicArts
 {
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
+    [BepInDependency(Jotunn.Main.ModGuid)]
+    [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
     public class Plugin : BaseUnityPlugin
     {
         private const string PluginGuid = "com.hex.runicarts";
         private const string PluginName = "HexRunicArts";
         private const string PluginVersion = "1.0.0";
+        private const string AssetBundleName = "hexrunicarts";
+        private static AssetBundle HexRunicArtsAssetBundle;
+        private const string HeartPrefabPath = "Assets/_CustomItems/HexRunicArts/EikthyrHeart.prefab";
+        
+        internal static GameObject EikthyrHeart;
 
         private Harmony _harmonyInstance;
 
@@ -28,6 +40,34 @@ namespace HexRunicArts
         {
             Instance = this;
             Log = Logger;
+
+            HexRunicArtsAssetBundle = GetAssetBundleFromResources(AssetBundleName);
+
+            if (HexRunicArtsAssetBundle == null)
+            {
+                Log.LogError($"AssetBundle | Failed to load: {AssetBundleName}");
+                return;
+            }
+
+            EikthyrHeart = HexRunicArtsAssetBundle.LoadAsset<GameObject>(HeartPrefabPath);
+
+            if (EikthyrHeart == null)
+            {
+                Log.LogError($"AssetBundle | Prefab not found: {HeartPrefabPath}");
+                return;
+            }
+
+            Log.LogInfo($"AssetBundle | Loaded prefab: {EikthyrHeart.name}");
+
+            var heartItem = new CustomItem(EikthyrHeart, true, new ItemConfig
+            {
+                Name = "Eikthyr's Heart",
+                Description = "The heart of the Horned One, still pulsing with the power of the storm."
+            });
+
+            ItemManager.Instance.AddItem(heartItem);
+
+            Log.LogInfo("ItemManager | Registered EikthyrHeart.");
 
             SplinterHotkey = Config.Bind("Splinter", "SplinterHotkey", new KeyboardShortcut(KeyCode.F, KeyCode.LeftShift), "Hotkey to activate Splinter ability.");
             
@@ -53,6 +93,31 @@ namespace HexRunicArts
             _harmonyInstance = null;
             Instance = null;
             Log = null;
+        }
+
+        public static AssetBundle GetAssetBundleFromResources(string fileName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            var resourceName = assembly.GetManifestResourceNames()
+                .SingleOrDefault(name => name.EndsWith(fileName));
+
+            if (resourceName == null)
+            {
+                Log.LogError($"AssetBundle | Embedded resource not found: {fileName}");
+                return null;
+            }
+
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream == null)
+                {
+                    Log.LogError($"AssetBundle | Failed to open resource: {resourceName}");
+                    return null;
+                }
+
+                return AssetBundle.LoadFromStream(stream);
+            }
         }
     }
 }

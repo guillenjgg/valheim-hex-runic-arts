@@ -6,8 +6,7 @@ namespace HexRunicArts.Services
     {
         private static readonly Dictionary<string, int> SplinteringMaterials = new Dictionary<string, int>
         {
-            { "$item_wood", 10 },
-            { "$item_stone", 5 }
+            { "Eikthyr's Heart", 1 }
         };
 
         internal static bool HasRequiredMaterials(Player player)
@@ -62,7 +61,7 @@ namespace HexRunicArts.Services
 
             foreach (var material in SplinteringMaterials)
             {
-                inventory.RemoveItem(material.Key, material.Value);
+                inventory.RemoveItem(material.Key, material.Value, worldLevelBased: false);
             }
 
             Plugin.Log.LogInfo("Lore | Splintering offering consumed.");
