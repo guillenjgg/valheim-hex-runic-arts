@@ -2,6 +2,7 @@
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
+using HexRunicArts.Assets;
 using HexRunicArts.Core.GUI;
 using HexRunicArts.Core.Services;
 using Jotunn.Utils;
@@ -34,6 +35,7 @@ namespace HexRunicArts
             Instance = this;
             Log = Logger;
 
+            AssetBundleHelper.LoadAssetBundle();
             ItemManagerService.Init();
 
             SplinterHotkey = Config.Bind("Splinter", "SplinterHotkey", new KeyboardShortcut(KeyCode.F, KeyCode.LeftShift), "Hotkey to activate Splinter ability.");

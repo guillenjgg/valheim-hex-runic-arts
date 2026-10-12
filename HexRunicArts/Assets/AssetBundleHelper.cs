@@ -15,6 +15,7 @@ namespace HexRunicArts.Assets
         internal static void LoadAssetBundle()
         {
             HexRunicArtsAssetBundle = GetAssetBundleFromResources(AssetBundleName);
+
             if (HexRunicArtsAssetBundle == null)
             {
                 Plugin.Log.LogError($"AssetBundle | Failed to load: {AssetBundleName}");
