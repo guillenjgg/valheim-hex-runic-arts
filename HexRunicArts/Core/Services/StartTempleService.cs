@@ -53,18 +53,8 @@ namespace HexRunicArts.Core.Services
 
                 IsInitialized = true;
 
-                Plugin.Log.LogInfo($"StartTemple | Position: {TemplePosition}");
-                Plugin.Log.LogInfo($"Runestone | Position: {RuneStonePosition} | Distance: {Vector3.Distance(TemplePosition, RuneStonePosition):F1}m");
-
-                if (Heightmap.GetHeight(RuneStonePosition, out var actualHeight))
-                {
-                    Plugin.Log.LogInfo($"Runestone | Procedural Height: {RuneStonePosition.y:F2} | Actual Height: {actualHeight:F2} | Difference: {actualHeight - RuneStonePosition.y:F2}m");
-                }
-
                 return;
             }
-
-            Plugin.Log.LogWarning("StartTemple not found.");
         }
     }
 }

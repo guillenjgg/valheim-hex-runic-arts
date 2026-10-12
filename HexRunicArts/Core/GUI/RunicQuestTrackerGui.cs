@@ -174,8 +174,6 @@ namespace HexRunicArts.Core.GUI
 
             _panel.SetActive(false);
 
-            _panel.SetActive(false);
-
             if (_collapsed)
             {
                 _collapsed = false;
@@ -186,8 +184,6 @@ namespace HexRunicArts.Core.GUI
             {
                 UpdateQuest(Player.m_localPlayer);
             }
-
-            Plugin.Log.LogInfo("GUI | Runic quest tracker created.");
         }
 
         private static void ToggleCollapsed()

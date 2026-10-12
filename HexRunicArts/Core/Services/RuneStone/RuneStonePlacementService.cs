@@ -36,7 +36,6 @@ namespace HexRunicArts.Core.Services.RuneStone
 
             if (maximumHeight - minimumHeight > MaximumHeightDifference)
             {
-                Plugin.Log.LogWarning($"RuneStone | Placement rejected: Uneven terrain ({maximumHeight - minimumHeight:F2}m).");
                 return false;
             }
 
@@ -61,7 +60,6 @@ namespace HexRunicArts.Core.Services.RuneStone
                     continue;
                 }
 
-                Plugin.Log.LogWarning($"RuneStone | Placement rejected: Obstacle detected ({collider.name}).");
                 return false;
             }
 

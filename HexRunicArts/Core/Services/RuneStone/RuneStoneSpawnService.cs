@@ -32,7 +32,6 @@ namespace HexRunicArts.Core.Services.RuneStone
 
             if (prefab == null)
             {
-                Plugin.Log.LogWarning("RuneStone | LocationProxy prefab not found.");
                 return false;
             }
 
@@ -41,7 +40,6 @@ namespace HexRunicArts.Core.Services.RuneStone
 
             if (location == null)
             {
-                Plugin.Log.LogWarning($"RuneStone | Location not found: {LocationName}");
                 return false;
             }
 
@@ -74,24 +72,14 @@ namespace HexRunicArts.Core.Services.RuneStone
                 if (string.IsNullOrEmpty(existingIdentifier))
                 {
                     zdo.Set(RuneStoneIdentifierKey, RuneStoneIdentifier);
-
-                    Plugin.Log.LogInfo(
-                        $"RuneStone | Existing proxy tagged | ID: {RuneStoneIdentifier} | Position: {zdo.GetPosition()}"
-                    );
                 }
                 else if (existingIdentifier != RuneStoneIdentifier)
                 {
-                    Plugin.Log.LogWarning(
-                        $"RuneStone | Conflicting proxy identifier: {existingIdentifier} | Position: {zdo.GetPosition()}"
-                    );
-
                     return false;
                 }
                 else
                 {
-                    Plugin.Log.LogInfo(
-                        $"RuneStone | Existing proxy found | ID: {existingIdentifier} | Position: {zdo.GetPosition()}"
-                    );
+                    Plugin.Log.LogInfo($"RuneStone | Existing proxy found | ID: {existingIdentifier} | Position: {zdo.GetPosition()}");
                 }
 
                 return true;
@@ -107,10 +95,6 @@ namespace HexRunicArts.Core.Services.RuneStone
             proxy.Set(ZDOVars.s_location, locationHash, false);
             proxy.Set(ZDOVars.s_seed, 0, false);
             proxy.Set(RuneStoneIdentifierKey, RuneStoneIdentifier);
-
-            Plugin.Log.LogInfo(
-                $"RuneStone | Persistent location proxy created | ID: {RuneStoneIdentifier} | Position: {position}"
-            );
 
             return true;
         }
@@ -158,8 +142,6 @@ namespace HexRunicArts.Core.Services.RuneStone
                 {
                     continue;
                 }
-
-                Plugin.Log.LogInfo($"RuneStone | Existing runestone verified | Position: {zdo.GetPosition()}");
 
                 return true;
             }

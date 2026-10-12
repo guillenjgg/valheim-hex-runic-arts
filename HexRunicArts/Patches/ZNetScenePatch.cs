@@ -22,10 +22,6 @@ namespace HexRunicArts.Patches
             {
                 CreatureDropService.RegisterEikthyrDrops(eikthyrPrefab);
             }
-            else
-            {
-                Plugin.Log.LogWarning("CreatureDrop | Eikthyr prefab not found.");
-            }
         }
     }
 }

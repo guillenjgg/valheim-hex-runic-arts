@@ -10,8 +10,6 @@ namespace HexRunicArts.Patches
         [HarmonyPostfix]
         private static void LoadPostfix()
         {
-            Plugin.Log.LogInfo("[Lifecycle] ZoneSystem.Load completed.");
-
             StartTempleService.FindStartTemple();
         }
     }

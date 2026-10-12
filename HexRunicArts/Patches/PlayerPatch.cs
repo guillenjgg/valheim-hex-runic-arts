@@ -49,8 +49,6 @@ namespace HexRunicArts.Patches
             }
 
             RunicQuestTrackerGui.Show();
-
-            Plugin.Log.LogInfo("GUI | Runic quest tracker shown | Normal spawn");
         }
 
         [HarmonyPatch(typeof(Player), nameof(Player.OnDestroy))]
@@ -79,8 +77,6 @@ namespace HexRunicArts.Patches
 
             _subscribedInventory = inventory;
             _subscribedInventory.m_onChanged += OnInventoryChanged;
-
-            Plugin.Log.LogInfo("GUI | Subscribed to player inventory changes.");
         }
 
         private static void UnsubscribeFromInventory()

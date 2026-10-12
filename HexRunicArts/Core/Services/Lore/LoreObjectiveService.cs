@@ -64,8 +64,6 @@ namespace HexRunicArts.Services.Lore
                 inventory.RemoveItem(material.Key, material.Value, worldLevelBased: false);
             }
 
-            Plugin.Log.LogInfo("Lore | Splintering offering consumed.");
-
             return true;
         }
     }

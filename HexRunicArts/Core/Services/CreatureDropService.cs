@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HexRunicArts.Assets;
+using UnityEngine;
 
 namespace HexRunicArts.Core.Services
 {
@@ -6,7 +7,7 @@ namespace HexRunicArts.Core.Services
     {
         internal static void RegisterEikthyrDrops(GameObject eikthyrPrefab)
         {
-            AddDrop(eikthyrPrefab, Plugin.EikthyrHeart);
+            AddDrop(eikthyrPrefab, AssetBundleHelper.EikthyrHeart);
         }
 
         private static void AddDrop(GameObject creaturePrefab, GameObject itemPrefab)
@@ -20,7 +21,6 @@ namespace HexRunicArts.Core.Services
 
             if (characterDrop == null)
             {
-                Plugin.Log.LogError($"CreatureDrop | CharacterDrop not found: {creaturePrefab.name}");
                 return;
             }
 
@@ -42,8 +42,6 @@ namespace HexRunicArts.Core.Services
                 m_levelMultiplier = false,
                 m_dontScale = true
             });
-
-            Plugin.Log.LogInfo($"CreatureDrop | Added {itemPrefab.name} to {creaturePrefab.name}");
         }
     }
 }

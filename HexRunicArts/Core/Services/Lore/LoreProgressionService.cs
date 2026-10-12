@@ -36,8 +36,6 @@ namespace HexRunicArts.Services.Lore
             }
 
             player.m_customData[SplinteringProgressKey] = ((int)progress).ToString();
-
-            Plugin.Log.LogInfo($"Lore | Splintering progress updated: {progress}");
         }
 
         internal static void ResetSplinteringProgress(Player player)
@@ -45,11 +43,6 @@ namespace HexRunicArts.Services.Lore
             if (player == null)
             {
                 return;
-            }
-
-            if (player.m_customData.Remove(SplinteringProgressKey))
-            {
-                Plugin.Log.LogInfo("Lore | Splintering progress reset.");
             }
         }
     }

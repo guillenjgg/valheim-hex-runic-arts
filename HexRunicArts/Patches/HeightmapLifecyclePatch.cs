@@ -44,8 +44,6 @@ namespace HexRunicArts.Patches
                 return;
             }
 
-            Plugin.Log.LogInfo($"RuneStone | Placement validated | Position: {validPosition}");
-
             if (RuneStoneSpawnService.TrySpawn(validPosition))
             {
                 _placementValidated = true;
