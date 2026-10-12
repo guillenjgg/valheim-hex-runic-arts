@@ -132,6 +132,7 @@
     </None>
     <None Include="Translations\English\HexRunicArts.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  <TargetPath>Translations\English\HexRunicArts.json</TargetPath>
     </None>
   </ItemGroup>
   <ItemGroup>

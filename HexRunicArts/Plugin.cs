@@ -18,7 +18,7 @@ namespace HexRunicArts
     {
         private const string PluginGuid = "com.hex.runicarts";
         private const string PluginName = "HexRunicArts";
-        private const string PluginVersion = "1.0.0";
+        private const string PluginVersion = "1.0.1";
 
         private Harmony _harmonyInstance;
 
