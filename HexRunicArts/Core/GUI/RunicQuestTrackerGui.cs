@@ -52,9 +52,7 @@ namespace HexRunicArts.Core.GUI
             switch (progress)
             {
                 case SplinteringProgressModel.NotStarted:
-                    _objectiveText.text =
-                        "Return to where your journey in Valheim begins.\n" +
-                        "Find the forgotten runestone near the sacrificial stones.";
+                    _objectiveText.text = Localization.instance.Localize("$hexrunicarts_quest_not_started");
                     _panel.SetActive(true);
                     break;
 
@@ -62,10 +60,15 @@ namespace HexRunicArts.Core.GUI
                     var materials = LoreObjectiveService.GetSplinteringMaterialProgress(player);
                     var heart = materials[ItemIdentifiers.EikthyrHeart];
 
+                    var retrieveHeart = Localization.instance.Localize("$hexrunicarts_quest_retrieve_heart");
+                    var heartProgress = Localization.instance.Localize("$hexrunicarts_quest_heart_progress");
+                    var returnRunestone = Localization.instance.Localize("$hexrunicarts_quest_return_runestone");
+
                     _objectiveText.text =
-                        "Retrieve Eikthyr's Heart.\n" +
-                        $"Eikthyr's Heart: {heart.Current}/{heart.Required}\n" +
-                        "Return to the runestone.";
+                        retrieveHeart + "\n" +
+                        string.Format(heartProgress, heart.Current, heart.Required) + "\n" +
+                        returnRunestone;
+
                     _panel.SetActive(true);
                     break;
 
@@ -126,7 +129,7 @@ namespace HexRunicArts.Core.GUI
             _panel.name = "HexRunicArts_QuestTracker";
 
             var title = GUIManager.Instance.CreateText(
-                text: "The First Rune",
+                text: Localization.instance.Localize("$hexrunicarts_quest_title"),
                 parent: _panel.transform,
                 anchorMin: new Vector2(0.5f, 1f),
                 anchorMax: new Vector2(0.5f, 1f),
@@ -155,7 +158,7 @@ namespace HexRunicArts.Core.GUI
             _collapseButton.onClick.AddListener(ToggleCollapsed);
 
             var objective = GUIManager.Instance.CreateText(
-                text: "Return to where your journey began.\nFind the forgotten runestone near the sacrificial stones.",
+                text: Localization.instance.Localize("$hexrunicarts_quest_not_started"),
                 parent: _panel.transform,
                 anchorMin: new Vector2(0.5f, 0.5f),
                 anchorMax: new Vector2(0.5f, 0.5f),

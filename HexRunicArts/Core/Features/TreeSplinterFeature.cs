@@ -18,7 +18,10 @@ namespace HexRunicArts.Core.Features
                 weapon.m_shared.m_skillType != Skills.SkillType.Axes ||
                 weapon.m_shared.m_damages.m_chop <= 0f)
             {
-                player.Message(MessageHud.MessageType.Center, "Equip an axe to use Splinter");
+                player.Message(
+                    MessageHud.MessageType.Center,
+                    Localization.instance.Localize("$hexrunicarts_splinter_equip_axe"));
+
                 return;
             }
 
@@ -75,11 +78,15 @@ namespace HexRunicArts.Core.Features
 
             if (insufficientTier)
             {
-                player.Message(MessageHud.MessageType.Center, "Your axe is too weak to splinter some nearby logs");
+                player.Message(
+                    MessageHud.MessageType.Center,
+                    Localization.instance.Localize("$hexrunicarts_splinter_weak_axe"));
             }
             else if (splinteredLogs == 0)
             {
-                player.Message(MessageHud.MessageType.Center, "No logs nearby");
+                player.Message(
+                    MessageHud.MessageType.Center,
+                    Localization.instance.Localize("$hexrunicarts_splinter_no_logs"));
             }
 
             if (splinteredLogs > 0 && Plugin.EnableSplinterEffect.Value)

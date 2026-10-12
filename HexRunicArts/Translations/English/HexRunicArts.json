@@ -1,4 +1,16 @@
 ﻿{
   "item_hexrunicarts_eikthyrheart": "Eikthyr's Heart",
-  "item_hexrunicarts_eikthyrheart_desc": "The heart of the Horned One, still pulsing with the power of the storm."
+  "item_hexrunicarts_eikthyrheart_desc": "The heart of the Horned One, still pulsing with the power of the storm.",
+  "hexrunicarts_quest_title": "The First Rune",
+  "hexrunicarts_quest_not_started": "Return to where your journey in Valheim begins.\nFind the forgotten runestone near the sacrificial stones.",
+  "hexrunicarts_quest_retrieve_heart": "Retrieve Eikthyr's Heart.",
+  "hexrunicarts_quest_heart_progress": "Eikthyr's Heart: {0}/{1}",
+  "hexrunicarts_quest_return_runestone": "Return to the runestone.",
+  "hexrunicarts_splinter_equip_axe": "Equip an axe to use Splinter",
+  "hexrunicarts_splinter_weak_axe": "Your axe is too weak to splinter some nearby logs",
+  "hexrunicarts_splinter_no_logs": "No logs nearby",
+  "hexrunicarts_lore_splintering_introduction": "In the days before iron, when mortals first walked beneath the gaze of the gods, Thor's thunder shook the roots of Yggdrasil.\n\nFrom that divine fury, the ancient runemasters learned to awaken the forces hidden within nature.\n\nThe first of these forgotten arts was Splintering. Through the axe, they channeled the thunder of Thor, commanding the very fibers of timber to fracture and yield.\n\nYet the gods do not grant their gifts freely.\n\nSeek Eikthyr, the Horned One, whose antlers command the lightning of the storm. Slay the beast and retrieve his heart, for within it lingers a spark of divine thunder.\n\nBring forth the heart of the Horned One as your offering.",
+  "hexrunicarts_lore_splintering_unlocked": "The gods have accepted your offering.\n\nThe thunder once wielded by the Horned One now answers to your axe. The ancient knowledge of Splintering awakens within you.\n\nTo cast Splintering, fell a tree and with an axe equipped aim near the log and press {0} to splinter the log.",
+  "hexrunicarts_lore_splintering_already_unlocked": "You have already mastered the ancient art of Splintering. The thunder of Thor now answers your call.\n\nTo cast Splintering, fell a tree and with an axe equipped aim near the log and press {0} to splinter the log.",
+  "hexrunicarts_lore_splintering_collection": "The gods await your offering.\n\nRetrieve the heart of the Horned One, still charged with the fury of the storm.\n\n{0}: {1}/{2}"
 }
