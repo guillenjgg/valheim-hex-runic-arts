@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using HexRunicArts.Core.Constants;
+using System.Collections.Generic;
 
 namespace HexRunicArts.Services.Lore
 {
@@ -6,7 +7,7 @@ namespace HexRunicArts.Services.Lore
     {
         private static readonly Dictionary<string, int> SplinteringMaterials = new Dictionary<string, int>
         {
-            { "Eikthyr's Heart", 1 }
+            { ItemIdentifiers.EikthyrHeart, 1 }
         };
 
         internal static bool HasRequiredMaterials(Player player)

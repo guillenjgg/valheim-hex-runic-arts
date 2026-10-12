@@ -1,4 +1,5 @@
-﻿using HexRunicArts.Models;
+﻿using HexRunicArts.Core.Constants;
+using HexRunicArts.Models;
 using HexRunicArts.Services.Lore;
 using Jotunn.Managers;
 using UnityEngine;
@@ -59,7 +60,7 @@ namespace HexRunicArts.Core.GUI
 
                 case SplinteringProgressModel.CollectingMaterials:
                     var materials = LoreObjectiveService.GetSplinteringMaterialProgress(player);
-                    var heart = materials["Eikthyr's Heart"];
+                    var heart = materials[ItemIdentifiers.EikthyrHeart];
 
                     _objectiveText.text =
                         "Retrieve Eikthyr's Heart.\n" +

@@ -1,4 +1,6 @@
-﻿namespace HexRunicArts.Services.Lore
+﻿using HexRunicArts.Core.Constants;
+
+namespace HexRunicArts.Services.Lore
 {
     internal static class LoreTextService
     {
@@ -28,13 +30,13 @@
         internal static string GetSplinteringCollectionText(Player player)
         {
             var progress = LoreObjectiveService.GetSplinteringMaterialProgress(player);
-            var heart = progress["Eikthyr's Heart"];
+            var heart = progress[ItemIdentifiers.EikthyrHeart];
 
             return
                 "The gods await your offering.\n\n" +
                 "Retrieve the heart of the Horned One, " +
                 "still charged with the fury of the storm.\n\n" +
-                $"Eikthyr's Heart: {heart.Current}/{heart.Required}";
+                $"$item_hexrunicarts_eikthyrheart: {heart.Current}/{heart.Required}";
         }
     }
 }

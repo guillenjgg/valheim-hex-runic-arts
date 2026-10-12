@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Assets\AssetBundleHelper.cs" />
     <Compile Include="Core\Constants\DamageIdentifiers.cs" />
+    <Compile Include="Core\Constants\ItemIdentifiers.cs" />
     <Compile Include="Core\Features\TreeSplinterFeature.cs" />
     <Compile Include="Core\GUI\RunicQuestTrackerGui.cs" />
     <Compile Include="Core\Services\CreatureDropService.cs" />
@@ -123,6 +124,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Translations\English\HexRunicArts.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
