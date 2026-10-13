@@ -30,6 +30,22 @@ namespace HexRunicArts.Patches
 
                 TreeSplinterFeature.ActivateSplinterAbility(__instance);
             }
+
+            if (Plugin.MineRockHotkey.Value.IsDown())
+            {
+                Plugin.Log.LogInfo("MineRockHotkey pressed");
+                var weapon = __instance.GetCurrentWeapon();
+
+                Plugin.Log.LogInfo($"Current weapon: {weapon?.m_equipped}");
+
+                if (weapon == null || weapon.m_shared.m_skillType != Skills.SkillType.Pickaxes)
+                {
+                    __instance.Message(MessageHud.MessageType.Center, "Equip a pickaxe");
+                    return;
+                }
+
+                MineRockFeature.DestroyNearbyRocks(__instance, (short)weapon.m_shared.m_toolTier);
+            }
         }
 
         [HarmonyPatch(typeof(Player), nameof(Player.OnSpawned), new[] { typeof(bool) })]

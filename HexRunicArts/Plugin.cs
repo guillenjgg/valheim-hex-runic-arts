@@ -18,7 +18,7 @@ namespace HexRunicArts
     {
         private const string PluginGuid = "com.hex.runicarts";
         private const string PluginName = "HexRunicArts";
-        private const string PluginVersion = "1.0.1";
+        private const string PluginVersion = "1.0.2";
 
         private Harmony _harmonyInstance;
 
@@ -26,6 +26,7 @@ namespace HexRunicArts
         internal static ConfigEntry<int> SplinterRadius;
         internal static ConfigEntry<bool> EnableSplinterEffect;
         internal static ConfigEntry<bool> EnableStumpDestroy;
+        internal static ConfigEntry<KeyboardShortcut> MineRockHotkey;
 
         internal static ManualLogSource Log;
         internal static Plugin Instance;
@@ -46,6 +47,7 @@ namespace HexRunicArts
 
             EnableSplinterEffect = Config.Bind("Splinter", "EnableSplinterEffect", true, "Enable or disable the visual effect when logs are splintered.");
             EnableStumpDestroy = Config.Bind("Splinter", "EnableTreeTrunkDestroy", true, "Enable or disable the destruction of tree trunks.");
+            MineRockHotkey = Config.Bind("Mining", "MineRockHotkey", new KeyboardShortcut(KeyCode.G, KeyCode.LeftShift), "Hotkey to activate rock explosion.");
 
             RunicQuestTrackerGui.Init();
 

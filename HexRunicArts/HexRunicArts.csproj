@@ -17,7 +17,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\debug_builds\HexRunicArts\</OutputPath>
+    <OutputPath>..\..\..\..\..\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Dev\BepInEx\plugins\Hex_Viking-HexRunicArts\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -96,6 +96,7 @@
     <Compile Include="Assets\AssetBundleHelper.cs" />
     <Compile Include="Core\Constants\DamageIdentifiers.cs" />
     <Compile Include="Core\Constants\ItemIdentifiers.cs" />
+    <Compile Include="Core\Features\MineRockFeature.cs" />
     <Compile Include="Core\Features\TreeSplinterFeature.cs" />
     <Compile Include="Core\GUI\RunicQuestTrackerGui.cs" />
     <Compile Include="Core\Services\CreatureDropService.cs" />
@@ -132,7 +133,7 @@
     </None>
     <None Include="Translations\English\HexRunicArts.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  <TargetPath>Translations\English\HexRunicArts.json</TargetPath>
+      <TargetPath>Translations\English\HexRunicArts.json</TargetPath>
     </None>
   </ItemGroup>
   <ItemGroup>
